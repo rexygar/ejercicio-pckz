@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [App\Http\Controllers\AdminController::class, 'index']);
+Route::post('/agendado', [App\Http\Controllers\AdminController::class, 'agendar'])->name('agenda.add');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
